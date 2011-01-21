@@ -1,0 +1,87 @@
+/*************************************************************
+* KwikStrip - An icon-based application launcher
+* Copyright (C) 2006 BioHazard
+*
+* This program is free software; you can redistribute and/or
+* modify it under the terms of the GNU General Public License
+* v2 or later as published by the Free Software Foundation.
+* This program is distributed in the hope that it will be
+* useful, but WITHOUT ANY WARRANTY; without even the implied
+* warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+* PURPOSE. See the GNU General Public License for details.
+**************************************************************
+* skin.rc : All the resource stuff
+*************************************************************/
+#include "skin.h"
+
+BMP_ABOUT BITMAP DISCARDABLE "bmp_about.bmp"
+
+DLG_SKIN DIALOG DISCARDABLE 0,0,256,166
+STYLE DS_MODALFRAME|DS_CENTER|WS_POPUP|WS_CAPTION|WS_SYSMENU|WS_MINIMIZEBOX
+CAPTION STR_TITLE
+FONT 8,"MS Sans Serif"
+MENU MNU_MENU
+BEGIN
+	GROUPBOX "Skin options",IDC_STATIC,0,0,256,54
+	RTEXT "BMP",IDC_STATIC,4,10,16,12,SS_CENTERIMAGE
+	EDITTEXT EDT_BMP,24,10,194,12,ES_READONLY
+	PUSHBUTTON "Browse",BTN_BMP,220,10,32,12
+
+	RTEXT "Title",IDC_STATIC,4,24,16,12,SS_CENTERIMAGE
+	EDITTEXT EDT_TITLE,24,24,152,12,ES_AUTOHSCROLL
+	CTEXT "Font",IDC_STATIC,178,24,16,12,SS_CENTERIMAGE
+	EDITTEXT EDT_FONT,196,24,56,12,ES_AUTOHSCROLL
+
+	RTEXT "MX",IDC_STATIC,4,38,16,12,SS_CENTERIMAGE
+	EDITTEXT EDT_MX,24,38,228,12,ES_AUTOHSCROLL
+// Preview part
+	CONTROL "",DRW_PREV,"Static",SS_WHITERECT|SS_SUNKEN,0,54,256,112
+END
+
+DLG_ABOUT DIALOG DISCARDABLE 0,0,212,68
+STYLE DS_MODALFRAME|DS_CENTER|WS_POPUP|WS_CAPTION|WS_SYSMENU
+CAPTION "About CmdStrip"
+FONT 8,"MS Sans Serif"
+BEGIN
+	CONTROL BMP_ABOUT,IDC_STATIC,"Static",SS_BITMAP|SS_REALSIZEIMAGE,0,0,212,38
+	LTEXT STR_TITLE,IDC_STATIC,4,42,124,8
+	LTEXT "Copyright (c) 2006 BioHazard Software\nhttp://biohazard.drdteam.org/",IDC_STATIC,4,50,124,16
+	RTEXT "Thanks be to WildWeasel!",IDC_STATIC,132,42,76,24
+END
+
+MNU_MENU MENU DISCARDABLE BEGIN
+	POPUP "File" BEGIN
+		MENUITEM "Load",MNU_LOAD
+		MENUITEM "Save",MNU_SAVE
+		MENUITEM SEPARATOR
+		MENUITEM "Exit\tAlt+F4",MNU_EXIT
+	END POPUP "Metrics" BEGIN
+		MENUITEM "Set to default 16x16px",MNU_16PX
+		MENUITEM "Set to default 32x32px",MNU_32PX
+		MENUITEM "Set to default 48x48px",MNU_48PX
+	END POPUP "Help" BEGIN
+		MENUITEM "About",MNU_ABOUT
+		MENUITEM "On-line Help",MNU_HELP
+	END
+END
+
+VER_VERSION VERSIONINFO
+	FILEVERSION 2,0,0,0
+	PRODUCTVERSION 2,0,0,0
+	FILEFLAGSMASK 0x3F
+	FILEFLAGS 0x2
+	FILEOS 0x4
+	FILETYPE 0x1
+BEGIN
+	BLOCK "StringFileInfo" BEGIN BLOCK "040904b0" BEGIN
+		VALUE "Comments", "Creates skin files for KwikStrip.\0"
+		VALUE "CompanyName", "BioHazard Software\0"
+		VALUE "FileDescription", "KwikStrip skin editor\0"
+		VALUE "FileVersion", "2.0 ALPHA 1\0"
+		VALUE "InternalName", "SkinEd\0"
+		VALUE "LegalCopyright", "Copyright © 2004-2006 BioHazard\0"
+		VALUE "OriginalFilename", "SkinEd.exe\0"
+		VALUE "ProductName", "SkinEd\0"
+		VALUE "ProductVersion", "2.0\0"
+	END END
+END

@@ -1,0 +1,168 @@
+/**********************************************************************
+* KwikStrip - An icon-based application launcher
+* Copyright (C) 2006 BioHazard / Vectec Software
+***********************************************************************
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 3 or any later version.
+*
+* This program is distributed in the hope that it will be useful, but
+* WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+***********************************************************************
+* kwik.rc : All the resource stuff
+**********************************************************************/
+#include "kwik.h"
+
+ICO_ICON ICON DISCARDABLE "ico_icon.ico"
+BMP_GFX BITMAP DISCARDABLE "bmp_gfx.bmp"
+BMP_ABOUT BITMAP DISCARDABLE "bmp_about.bmp"
+
+DLG_CONFIG DIALOG DISCARDABLE 0,0,220,170
+STYLE DS_MODALFRAME|DS_CENTER|WS_POPUP|WS_CAPTION|WS_SYSMENU
+CAPTION "KwikStrip - Configuration"
+FONT 8,"MS Sans Serif"
+BEGIN
+// Item list
+	GROUPBOX "Items (double-click to edit)",IDC_STATIC,4,0,104,166
+	LISTBOX LST_ITEMS,8,9,96,139,LBS_NOINTEGRALHEIGHT|LBS_DISABLENOSCROLL|WS_VSCROLL|LBS_OWNERDRAWFIXED
+	PUSHBUTTON "Add",BTN_ADD,8,150,24,12
+	PUSHBUTTON "Rem",BTN_DELETE,32,150,24,12
+	PUSHBUTTON "Up",BTN_UP,56,150,24,12
+	PUSHBUTTON "Dn",BTN_DOWN,80,150,24,12
+// General options
+	GROUPBOX "General",IDC_STATIC,112,0,104,100
+	CONTROL "Auto Close Strip",CHK_CLOSE,"Button",BS_AUTOCHECKBOX|WS_TABSTOP,116,8,96,8
+	CONTROL "Open/Close Animation",CHK_ANIM,"Button",BS_AUTOCHECKBOX|WS_TABSTOP,116,16,96,8
+	CONTROL "AnimSlide",SLD_ANIM,"msctls_trackbar32",TBS_AUTOTICKS|WS_TABSTOP,116,24,96,12
+	LTEXT "Columns per Row",IDC_STATIC,116,40,64,12,SS_CENTERIMAGE
+	EDITTEXT EDT_COLS,180,40,32,12,ES_UPPERCASE|ES_READONLY|ES_NUMBER
+	CONTROL "RowSpin",SPN_COLS,"msctls_updown32",UDS_SETBUDDYINT|UDS_ALIGNRIGHT|UDS_AUTOBUDDY|UDS_ARROWKEYS,200,40,11,12
+	LTEXT "Infobox Width (cols)",IDC_STATIC,116,52,64,12,SS_CENTERIMAGE
+	EDITTEXT EDT_INFSZ,180,52,32,12,ES_UPPERCASE|ES_READONLY|ES_NUMBER
+	CONTROL "InfSzSpin",SPN_INFSZ,"msctls_updown32",UDS_SETBUDDYINT|UDS_ALIGNRIGHT|UDS_AUTOBUDDY|UDS_ARROWKEYS,200,52,11,12
+	LTEXT "Y-offset (pixels)",IDC_STATIC,116,64,56,12,SS_CENTERIMAGE
+	EDITTEXT EDT_YOFF,172,64,40,12,ES_UPPERCASE|ES_READONLY|ES_NUMBER
+	CONTROL "YOffSpin",SPN_YOFF,"msctls_updown32",UDS_SETBUDDYINT|UDS_ALIGNRIGHT|UDS_AUTOBUDDY|UDS_ARROWKEYS|UDS_NOTHOUSANDS,200,64,11,12
+	LTEXT "Skin File",IDC_STATIC,116,76,96,8
+	EDITTEXT EDT_SKIN,116,84,80,12,ES_AUTOHSCROLL
+	PUSHBUTTON "...",BTN_SKIN,196,84,16,12
+// Strip display
+	GROUPBOX "Strip Display/Accessability",IDC_STATIC,112,100,104,48
+	CONTROL "Normal Z Ordering",RAD_DEFZ,"Button",BS_AUTORADIOBUTTON,116,108,96,8
+	CONTROL "Always on top",RAD_ONTOP,"Button",BS_AUTORADIOBUTTON,116,116,96,8
+	CONTROL "Show on hotkey",RAD_HOTKEY,"Button",BS_AUTORADIOBUTTON,116,124,96,8
+	CONTROL "HotKey",HTK_HOTKEY,"msctls_hotkey32",WS_BORDER|WS_TABSTOP,116,132,96,12
+// Standard buttons
+	DEFPUSHBUTTON "OK",BTN_OK,168,152,48,12
+	PUSHBUTTON "Cancel",BTN_CANCEL,112,152,48,12
+END
+
+DLG_PROP DIALOG DISCARDABLE 0,0,160,156
+STYLE DS_MODALFRAME|WS_POPUP|WS_CAPTION|WS_SYSMENU
+CAPTION "KwikStrip - Item Properties"
+FONT 8,"MS Sans Serif"
+BEGIN
+// Basic info
+	GROUPBOX "Basic information (required)",IDC_STATIC,4,0,152,54
+	LTEXT "Application Name",IDC_STATIC,8,8,144,8
+	EDITTEXT EDT_NAME,8,16,144,12,ES_AUTOHSCROLL
+	LTEXT "Executable/File/Directory/URL Path",IDC_STATIC,8,28,128,8
+	EDITTEXT EDT_PATH,8,36,128,12,ES_AUTOHSCROLL
+	PUSHBUTTON "...",BTN_PATH,136,36,16,12
+// Advanced info
+	GROUPBOX "Advanced information (optional)",IDC_STATIC,4,54,152,52
+	LTEXT "Working Directory",IDC_STATIC,8,62,144,8
+	EDITTEXT EDT_DIR,8,70,144,12,ES_AUTOHSCROLL
+	LTEXT "Arguments",IDC_STATIC,8,82,144,8
+	EDITTEXT EDT_ARGS,8,90,144,12,ES_AUTOHSCROLL
+// Custom icon
+	GROUPBOX "Custom Icon (optional)",IDC_STATIC,4,106,152,32
+	LTEXT "Icon",IDC_STATIC,8,114,80,8
+	EDITTEXT EDT_ICON,8,122,80,12,ES_AUTOHSCROLL
+	LTEXT "Index",IDC_STATIC,88,122,24,8
+	EDITTEXT EDT_INDEX,88,122,24,12,ES_UPPERCASE|ES_READONLY|ES_NUMBER
+	CONTROL "IndexSpin",SPN_INDEX,"msctls_updown32",UDS_SETBUDDYINT|UDS_ALIGNRIGHT|UDS_AUTOBUDDY,100,122,11,12
+	PUSHBUTTON "...",BTN_ICON,112,122,16,12
+	ICON "",ICO_ICOPRV,131,114,20,20,SS_REALSIZEIMAGE
+// Standard buttons
+	PUSHBUTTON "OK",BTN_OK,108,140,48,12
+	PUSHBUTTON "Cancel",BTN_CANCEL,4,140,48,12
+END
+
+DLG_ARGS DIALOG DISCARDABLE 0,0,186,36
+STYLE DS_MODALFRAME|WS_POPUP|WS_CAPTION
+CAPTION "Launch with custom args"
+FONT 8,"MS Sans Serif"
+BEGIN
+	EDITTEXT EDT_ARGS,4,4,176,12,ES_AUTOHSCROLL
+	PUSHBUTTON "Cancel",BTN_CANCEL,4,20,48,12
+	DEFPUSHBUTTON "OK",BTN_OK,132,20,48,12
+END
+
+DLG_CRASH DIALOG DISCARDABLE 0,0,278,240
+STYLE DS_MODALFRAME|DS_CENTER|WS_POPUP|WS_CAPTION|WS_SYSMENU
+CAPTION "KwikStrip fatal error"
+FONT 8,"MS Sans Serif"
+BEGIN
+	CONTROL ICO_ICON,IDC_STATIC,"Static",SS_ICON|SS_REALSIZEIMAGE,4,2,32,32
+	LTEXT "Whoops! It looks like KwikStrip died on you!\nBelow is the crash dump which contains debugging information.\nPlease post a report at http://forum.drdteam.org to help Bio fix the problem.",IDC_STATIC,38,4,236,24
+	EDITTEXT EDT_DUMP,4,34,270,186,ES_MULTILINE|ES_WANTRETURN|WS_HSCROLL|WS_VSCROLL
+	LTEXT STR_TITLE,IDC_STATIC,4,224,126,12,SS_CENTERIMAGE
+	PUSHBUTTON "Select text",BTN_SELECT,134,224,44,12
+	PUSHBUTTON "Go to forum",BTN_FORUM,182,224,44,12
+	DEFPUSHBUTTON "Waah!",BTN_OK,230,224,44,12
+END
+
+DLG_ABOUT DIALOG DISCARDABLE 0,0,212,68
+STYLE DS_MODALFRAME|DS_CENTER|WS_POPUP|WS_CAPTION|WS_SYSMENU
+CAPTION "About CmdStrip"
+FONT 8,"MS Sans Serif"
+BEGIN
+	CONTROL BMP_ABOUT,IDC_STATIC,"Static",SS_BITMAP|SS_REALSIZEIMAGE,0,0,212,38
+	LTEXT STR_TITLE,IDC_STATIC,4,42,124,8
+	LTEXT "Copyright (c) 2006 BioHazard Software\nhttp://biohazard.drdteam.org/",IDC_STATIC,4,50,124,16
+	RTEXT "Thanks/Greetz to:\nWildWeasel,\nDoomRater && TDA!",IDC_STATIC,132,42,76,24
+END
+
+MNU_MENU MENU DISCARDABLE BEGIN
+	POPUP "Main" BEGIN
+		MENUITEM "Open/Close Strip\tSpace",MNU_OPNCLS
+		MENUITEM SEPARATOR
+		MENUITEM "Configuration",MNU_CONFIG
+		MENUITEM "About",MNU_ABOUT
+		MENUITEM "Help",MNU_HELP
+		MENUITEM "Exit\tAlt+F4",MNU_EXIT
+	END POPUP "Item" BEGIN
+		MENUITEM "Launch\tClick",MNU_LAUNCH
+		MENUITEM "Custom args\tShift+Click",MNU_ARGS
+		MENUITEM "Current directory\tCtrl+Click",MNU_DIR
+		MENUITEM "Open contianing folder",MNU_FOLDER
+		MENUITEM SEPARATOR
+		MENUITEM "Configuration",MNU_CONFIG
+		MENUITEM "About",MNU_ABOUT
+		MENUITEM "On-line Help",MNU_HELP
+		MENUITEM "Exit\tAlt+F4",MNU_EXIT
+	END
+END
+
+VER_VERSION VERSIONINFO
+	FILEVERSION 2,5,6,0
+	PRODUCTVERSION 2,5,0,0
+	FILEFLAGSMASK 0x3F
+	FILEFLAGS 0x2
+	FILEOS 0x4
+	FILETYPE 0x1
+BEGIN
+	BLOCK "StringFileInfo" BEGIN BLOCK "040904b0" BEGIN
+		VALUE "Comments", "Launches applications and files from a docked icon box.\0"
+		VALUE "CompanyName", "BioHazard Software\0"
+		VALUE "FileDescription", "KwikStrip Application/File Launcher\0"
+		VALUE "FileVersion", "2.5 BETA 6\0"
+		VALUE "InternalName", "KwikStrip\0"
+		VALUE "LegalCopyright", "Copyright © 2004-2006 BioHazard\0"
+		VALUE "OriginalFilename", "KwikStrip.exe\0"
+		VALUE "ProductName", "KwikStrip\0"
+		VALUE "ProductVersion", "2.5\0"
+	END END
+END

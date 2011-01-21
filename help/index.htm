@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+	<title>KwikStrip Documentation</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+	<link rel="stylesheet" type="text/css" media="print" href="print.css"/>
+</head><body>
+<div class="menu"><h1>Contents</h1>
+	<h2>Overview</h2><ul>
+		<li><a href="#what">What is KwikStrip?</a></li>
+		<li><a href="#why">Why should I use it?</a></li>
+		<li><a href="#faq">Frequently Asked Qs</a></li>
+		<li><a href="#bugs">How to report a bug</a></li>
+	</ul>
+	<h2>Getting Started</h2><ul>
+		<li><a href="#install">Installing KwikStrip</a></li>
+		<li><a href="#additem">Adding an item</a></li>
+		<li><a href="#main">The main window</a></li>
+		<li><a href="#launch">Launching applications</a></li>
+	</ul>
+	<h2>Advanced Features</h2><ul>
+		<li><a href="#config">The configuration dialog</a></li>
+		<li><a href="#advitem">Optional item features</a></li>
+		<li><a href="#advlaunch">Extra launching features</a></li>
+		<li><a href="#shortcut">Keyboard shortcuts</a></li>
+		<li><a href="#skins">Skins</a><ul>
+			<li><a href="#getskin">Downloading skins</a></li>
+			<li><a href="#makeskin">Making skins</a></li>
+		</ul></li>
+	</ul>
+	<h2>Technical Documentation</h2><ul>
+		<li><a href="#ini">The INI file</a></li>
+		<li><a href="#skinfmt">Skin file format</a></li>
+		<li><a href="#structs">Data Structures</a><ul>
+			<li><a href="#vr">vr. (Global Vars)</a></li>
+			<li><a href="#cf">cf. (User Config)</a></li>
+		</ul></li>
+		<li><a href="#drawing">Drawing functions</a></li>
+	</ul>
+</div><div class="body">
+
+<h1 class="first">KwikStrip Documentation</h1><p>
+	Thanks for grabbing a copy of KwikStrip! This help page should let you know how
+	everything works. I'll try not to get too programmatic, but that's the way I think.
+	Anyway, there is a topic list over there, you can use it to jump around. Have fun
+	using KwikStrip, I hope it serves as an excellent application management solution.
+	<br/><br/>
+	This document covers Version 2.5 the information might be inaccurate or completely void if
+	you are using an older version. You can upgrade here at the
+	<a href="http://biohazard.drdteam.org/kwikstrip.php">KwikStrip page</a>.
+	<br/><br/>
+	Oh, I should also point out that any icons shown on the strip in any of the screenshots
+	on this page (or anywhere for that matter) are the property of their respective owners,
+	but you knew that already right?
+</p><div class="sub">
+	<a name="what"></a><h2>What is KwikStrip?</h2><p>
+		KwikStrip is an application launcher, but more specifically, it's this:
+		<br/><img src="arrow.png" alt="[KwikStrip Arrow]"/><br/>
+		Okay, that doesn't look like much. That's the point. KwikStrip is designed to take as
+		little amount of space as possible until you tell it to spring to life by clicking on
+		it. Then it opens up to reveal your buttons. Like this:
+		<br/><img src="strip.png" alt="[KwikStrip Strip]"/>
+	</p><a name="why"></a><h2>Why should I use it?</h2><p>
+		Well, there are several reasons why you should at least <i>try</i> KwikStrip:
+		</p><ul>
+			<li>Navigating through the Start Menu is a pain.</li>
+			<li>The Start Menu is especially evil if you have installed a zillion programs and
+				the Start Menu is full of a zillion submenus and in most cases you aren't even
+				sure where all those submenus came from...</li>
+			<li>Sometimes it's impossible to organize the Start Menu due to user account
+				restrictions.</li>
+			<li>Using the built-in QuickLaunch bar wastes valuable taskbar space. Especially
+				when you need to add 20 or 30 items. KwikStrip solves this problem. I've
+				personally seen strips as large as 140 buttons!</li>
+			<li>Forget searching the Start Menu, launching an application with KwikStrip is
+				simple as Click, Click, Done!</li>
+		</ul>
+	<a name="faq"></a><h2>Frequently Asked Questions</h2><p>
+		I haven't been asked many questions yet, (is that a good or bad thing? ;) ) but when I
+		get some that are asked frequently, I'll put them here.
+	</p><a name="bugs"></a><h2>How to report a bug</h2><p>
+		KwikStrip has been in development for a long time. I've worked out nearly all the bugs.
+		Version 2.5.6 is very stable. Nevertheless, I'm not perfect so the chances of my
+		program being perfect are pretty slim. If you do happen to find a bug, there's a
+		<a href="http://biohazard.drdteam.org/bugs.php">bug tracker on my web site</a> so go
+		check that out. If the problem isn't already listed, you can report it using the handy
+		<a href="http://forum.drdteam.org/viewforum.php?f=38">bug report area of my forum</a>.
+		<br/><br/>If you are reporting a crash, make sure to post everything that comes out of
+		the crash dialog and your config/ini file. Also <i>make sure you describe what you were
+		doing when the bad stuff happened</i>. Nothing is worse than reporting a big problem
+		where I can't figure out how you got it.
+	</p>
+</div>
+
+<h1>Getting Started</h1><p>
+	Kwikstrip isn't difficult to install and use. I've tried to keep it very simple. For the
+	sake of completeness, here's installation and basic usage instructions.
+</p><div class="sub">
+	<a name="install"></a><h2>Installing KwikStrip</h2><p>
+		Installing KwikStrip depends on how fresh you want it. In most cases, you will want to
+		grab the latest official version from my site on the
+		<a href="http://biohazard.drdteam.org/kwikstrip.php">KwikStrip page</a>. If you want
+		it hot out of the oven, you will need to check-out a copy from the SVN server.
+		<br/><br/>Once you have a .zip, .tar.bz2 or even just the .exe, Just drop it in a
+		folder somewhere and run it. No installation, no funky registry stuff, now weirdo
+		wizards.
+		<br/><br/>
+		If you want KwikStrip to start when you turn on your computer, make a shortcut in your
+		start menu's "startup" folder. You could do a registry thing too, but KwikStrip will
+		never ever touch the registry so you'll have to do it yourself. It's pretty easy, just
+		fire up RegEdit and browse to:
+		</p><pre>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</pre><p>
+		Then add a key named "KwikStrip" and set the value to wherever you put KwikStrip.exe.
+		<br/><br/>
+		I prefer the startup folder method since I tend to move KwikStrip around a lot and
+		startup is easy to update.
+	</p><a name="additem"></a><h2>Adding an item</h2><p>
+		The first time you start KwikStrip, it will ask you to configure it, click "yes" to
+		enter the configuration dialog. Ignore all the pretty knobs and switches. In the
+		lower-left corner there is a button labeled "add", you want that. Hit it now to enter
+		the item properties dialog. Type in the name of the program under "Application Name"
+		and click the "..." button next to Executable/File/Directory/URL path and find the
+		.exe using the file browser thing. Ignore everything else, We'll talk about that stuff
+		later in the <a href="#advitem">Optional item features</a> section. Click "OK" when
+		you're finished.
+		<br/><br/>
+		Now that you have an item (conveniently shown in the item list), you can run
+		KwikStrip, but why would you want a strip with only 1 item? Take some time to add more
+		items and fill out your strip. When you're done adding items, click "OK" to save your
+		configuration and start KwikStrip for real.
+	</p><a name="main"></a><h2>The main window</h2><p>
+		The main window is quite simple, containing only 3 parts:
+		<br/><img src="main.png" alt="[KwikStrip Main Window]"/>
+		</p><ol>
+			<li><b>The Arrow:</b> The arrow is what opens and closes the strip. Without it,
+				KwikStrip would use up a ton of screen space all the time and nobody wants
+				that now do they?</li>
+			<li><b>Buttons:</b> KwikStrip's buttons are what launch the applications you
+				define in the configuration. Just a single click and away you go.
+				<br/>Right-clicking on a button will bring up a special menu with extra
+				launching options. These options are covered in the
+				<a href="advlaunch">Extra Launching Features</a> section.</li>
+			<li><b>The "InfoBox":</b> The InfoBox displays the item title of the button your
+				mouse pointer is hovering over or just the version of KwikStrip is running.
+				<br/>Right-clicking on a button will bring up the system menu which will bring
+				up the configuration or on-line help.</li>
+		</ol>
+	<a name="launch"></a><h2>Launching applications</h2><p>
+		In-progress
+	</p>
+</div>
+
+<h1>Advanced Features</h1><p>
+	In-progress
+</p><div class="sub">
+	<a name="config"></a><h2>The configuration dialog</h2><p>
+		In-progress
+	</p><a name="advitem"></a><h2>Optional item features</h2><p>
+		In-progress
+	</p><a name="advlaunch"></a><h2>Extra launching features</h2><p>
+		In-progress
+	</p><a name="shortcut"></a><h2>Keyboard shortcuts</h2><p>
+		In-progress
+	</p><a name="skins"></a><h2>Skins</h2><p>
+		In-progress
+	</p><div class="sub">
+		<a href="#getskin"></a><h3>Downloading skins</h3><p>
+			In-progress
+		</p><a href="#getskin"></a><h3>Making skins</h3><p>
+			In-progress
+		</p>
+	</div>
+</div>
+
+<h1>Technical Documentation</h1><p>
+	In-progress
+</p><div class="sub">
+	<a name="ini"></a><h2>The INI file</h2><p>
+		In-progress
+	</p><a name="skinfmt"></a><h2>The skin file format</h2><p>
+		Yeah, there will be some info here, but I'm just keeping the skin specs for now so I
+		don't lose them.
+</p><pre>
+<span class="i">typedef struct</span><span class="o">{</span>
+    <span class="c">// BITMAP bmp; This is just the raw bitmap data.
+    // The skin is basically just tacked onto the end of a standard windows bitmap file.
+    // You shouldn't need to read anything from it.</span>
+    <span class="i">char</span> format<span class="o">[</span>9<span class="o">]</span>;        <span class="c">// This should always be read as "KWIKSTRIP"</span>
+    <span class="i">unsigned char</span> version; <span class="c">// Version ID, this is version 0x03</span>
+    <span class="i">unsigned char</span> namelen; <span class="c">// how many chars long .name is (not including \0)</span>
+    <span class="i">char</span> name<span class="o">[-></span>namelen<span class="o">]</span>;  <span class="c">// the title of the skin</span>
+    <span class="i">unsigned char</span> fontlen; <span class="c">// how many chars long .font is (not including \0)</span>
+    <span class="i">char</span> font<span class="o">[-></span>fontlen<span class="o">]</span>;  <span class="c">// the font name to be used for the infobox</span>
+    <span class="i">unsigned char</span> mxlen;   <span class="c">// how many bytes to read for .mx</span>
+    <span class="i">char</span> mx<span class="o">[-></span>mxlen<span class="o">]</span>;      <span class="c">// the skin metrics data</span>
+    <span class="i">signed short</span> offset;   <span class="c">// Number of bytes from the end of the file this skin def is</span>
+<span class="o">}</span>SKINDEF<span class="o">;</span>
+</pre><p>And the metrics struct:</p><pre>
+<span class="i">typedef struct</span><span class="o">{</span>
+    <span class="i">unsigned long</span> txc; <span class="c">// Color of the infobox font, stored little-endian (#BBGGRR)</span>
+    <span class="i">unsigned char</span> txt; <span class="c">// Size of the infobox text (in pixels I think, not sure)</span>
+    <span class="i">unsigned char</span> txa; <span class="c">// Bit 0x1 means bold, 0x2 means italic. (you can also have both)</span>
+    <span class="i">unsigned char</span> arw; <span class="c">// X pos of the arrow graphic on skn->bmp</span>
+    <span class="i">unsigned char</span> btn; <span class="c">// X pos of the button graphic on skn->bmp</span>
+    <span class="i">unsigned char</span> ilf; <span class="c">// X pos of the left side of the infobox graphic on skn->bmp</span>
+    <span class="i">unsigned char</span> ict; <span class="c">// X pos of the center of the infobox graphic on skn->bmp</span>
+    <span class="i">unsigned char</span> irt; <span class="c">// X pos of the right side of the infobox graphic on skn->bmp</span>
+    <span class="i">unsigned char</span> up;  <span class="c">// Y pos of the up states on skn->bmp</span>
+    <span class="i">unsigned char</span> hv;  <span class="c">// Y pos of the hover states on skn->bmp</span>
+    <span class="i">unsigned char</span> dn;  <span class="c">// Y pos of the down states on skn->bmp</span>
+    <span class="i">unsigned char</span> inf; <span class="c">// Y pos of the infobox parts on skn->bmp</span>
+    <span class="i">unsigned char</span> arx; <span class="c">// Width of the arrow graphic</span>
+    <span class="i">unsigned char</span> ary; <span class="c">// Height of the arrow graphic</span>
+    <span class="i">unsigned char</span> bnx; <span class="c">// Width of the button graphic</span>
+    <span class="i">unsigned char</span> bny; <span class="c">// Height of the button graphic</span>
+    <span class="i">unsigned char</span> inx; <span class="c">// Width of the infobox sections</span>
+    <span class="i">unsigned char</span> iny; <span class="c">// Height of the infobox sections</span>
+    <span class="i">unsigned char</span> icx; <span class="c">// Width to draw icons on the strip</span>
+    <span class="i">unsigned char</span> icy; <span class="c">// Height to draw icons on the strip</span>
+    <span class="i">unsigned char</span> bpx; <span class="c">// Amount of space between the left edge of a button and it's icon</span>
+    <span class="i">unsigned char</span> bpy; <span class="c">// Same as ->bpx except this is for the top</span>
+    <span class="i">unsigned char</span> bdx; <span class="c">// Same as ->bpx except this is when the button is pressed</span>
+    <span class="i">unsigned char</span> bdy; <span class="c">// Same as ->bpy except this is when the button is pressed</span>
+    <span class="i">unsigned char</span> ipx; <span class="c">// Amount of space between the left edge of the infobox and the text</span>
+    <span class="i">unsigned char</span> ipy; <span class="c">// Same as ->ipx except this is for the top</span>
+<span class="o">}</span>METRICS<span class="o">={</span>0xDDDDDD,12,1,0,18,0,18,36,0,36,72,108,18,36,36,36,18,18,32,32,2,2,3,3,2,2<span class="o">};</span>
+</pre>
+	<a name="structs"></a><h2>Data structures</h2><p>
+		In-progress
+		</p><div class="sub">
+			<a href="#vr"></a><h3>vr. (Global Vars)</h3><p>
+				In-progress
+			</p><a href="#cf"></a><h3>cf. (User Configuration)</h3><p>
+				In-progress
+			</p>
+		</div>
+	<a name="drawing"></a><h2>Drawing functions</h2><p>
+		In-progress
+	</p>
+</div>
+
+</div></body></html>

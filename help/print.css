@@ -1,0 +1,53 @@
+body{
+	font-family: "Arial",sans-serif;
+	font-size: 14px;
+}h1,h2,h3{
+	border-bottom: 2px solid #000;
+	padding: 2px 8px 2px 8px;
+	margin: 16px 0px 0px 0px;
+	font-size: 24px;
+}h2{
+	font-size: 18px;
+}h3{
+	font-size: 14px;
+}p{
+	padding: 2px;
+	margin: 0px;
+}pre{
+	font-family: "Courier New",monospace;
+	margin: 4px 8px 4px 8px;
+	border: 1px solid #000;
+	padding: 4px;
+}ul,ol{
+	list-style-position: outside;
+	padding: 0px 8px 0px 24px;
+	margin: 2px 0px 2px 0px;
+}li{
+	margin: 1px 0px 1px 0px;
+	padding: 0px;
+}a{ /* make links look like text */
+	color: #000;
+	text-decoration: none;
+}img{
+	border: none;
+	margin: 4px;
+}
+
+/* Main content block */
+div.body h1.first{
+	margin: 0px;
+}div.sub{
+	margin: 0px 8px 0px 8px;
+}
+
+/* Stuff to handle source code */
+span.c{ /* comments */
+	color: #080;
+}span.i{ /* identifiers */
+	color: #00F;
+}span.o{ /* operators and brackets */
+	color: #F00;
+}
+
+/* The menu */
+div.menu{display: none;}
